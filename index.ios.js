@@ -2,46 +2,64 @@ import React, {
   AppRegistry,
   Component,
   StyleSheet,
-  Text,
-  View
+  TabBarIOS
 } from 'react-native';
 
+import MoviesTab from './components/MoviesTab';
+import TvTab from './components/TvTab';
+
+const moviesIcon = require('./images/movies.png');
+const tvIcon = require('./images/tv.png');
+
 class Watchtower extends Component {
+  // Constructor
+  constructor(props) {
+    super(props);
+    
+    this.state = {
+      selectedTab: 'movies'
+    }
+  }
+  
+  // Render
   render() {
     return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.ios.js
-        </Text>
-        <Text style={styles.instructions}>
-          Press Cmd+R to reload,{'\n'}
-          Cmd+D or shake for dev menu
-        </Text>
-      </View>
+      <TabBarIOS
+        style={styles.container}>
+        <TabBarIOS.Item
+          title='Movies'
+          icon={moviesIcon}
+          selected={this.state.selectedTab === 'movies'}
+          onPress={() => {
+            this.setState({
+              selectedTab: 'movies'
+            });
+          }}>
+          <MoviesTab />
+        </TabBarIOS.Item>
+        
+        <TabBarIOS.Item
+          title='TV'
+          icon={tvIcon}
+          selected={this.state.selectedTab === 'tv'}
+          onPress={() => {
+            this.setState({
+              selectedTab: 'tv'
+            });
+          }}>
+          <TvTab />
+        </TabBarIOS.Item>
+      </TabBarIOS>
     );
   }
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
+    marginTop: 20,
+    marginLeft: 5,
+    marginRight: 5
+  }
 });
 
 AppRegistry.registerComponent('Watchtower', () => Watchtower);
