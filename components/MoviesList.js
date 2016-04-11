@@ -1,5 +1,6 @@
 import React, {
   Component,
+  Image,
   ListView,
   StyleSheet,
   Text,
@@ -8,6 +9,7 @@ import React, {
 
 import api from '../utils/api';
 import colors from '../utils/colors';
+import truncate from '../utils/truncate';
 
 const styles = StyleSheet.create({
   container: {
@@ -19,10 +21,33 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   row: {
-    marginLeft: 20,
-    paddingVertical: 15,
+    marginLeft: 10,
+    paddingVertical: 10,
+    paddingRight: 10,
     borderBottomColor: colors.border,
-    borderBottomWidth: 0.5
+    borderBottomWidth: 0.5,
+    
+    flex: 1,
+    flexDirection: 'row'
+  },
+  posterContainer: {
+    flex: 0
+  },
+  poster: {
+    width: 70,
+    height: 105,
+    marginRight: 10
+  },
+  body: {
+    flex: 1
+  },
+  title: {
+    fontSize: 16,
+    fontWeight: '500'
+  },
+  description: {
+    fontSize: 14,
+    color: colors.lightFont
   }
 });
 
@@ -67,7 +92,23 @@ class MoviesList extends Component {
   renderRow(row) {
     return (
       <View style={styles.row}>
-        <Text>{row.original_title}</Text>
+        <View style={styles.posterContainer}>
+          <Image
+            style={styles.poster}
+            resizeMode='contain'
+            source={{uri: api.getPoster(row.poster_path, 'w154')}}
+          />
+        </View>
+        
+        <View style={styles.body}>
+          <Text style={styles.title}>{row.title}</Text>
+          
+          <Text style={styles.description}>
+            Released in {row.release_date.slice(0,4)}
+            {'\n'}
+            {truncate(row.overview, 100)}
+          </Text>
+        </View>
       </View>
     );
   }
