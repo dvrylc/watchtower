@@ -1,15 +1,27 @@
 import React, {
   Component,
-  Text,
-  View
+  NavigatorIOS,
+  StyleSheet
 } from 'react-native';
+
+import MoviesList from './MoviesList';
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1
+  }
+});
 
 class MoviesTab extends Component {
   render() {
     return (
-      <View>
-        <Text>Movies</Text>
-      </View>
+      <NavigatorIOS
+        style={styles.container}
+        initialRoute={{
+          title: 'Movies',
+          component: MoviesList
+        }}
+      />
     );
   }
 }

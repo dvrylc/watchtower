@@ -56,9 +56,7 @@ class Watchtower extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 20,
-    marginLeft: 5,
-    marginRight: 5
+    marginTop: 20
   }
 });
 
