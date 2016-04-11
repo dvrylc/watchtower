@@ -24,8 +24,7 @@ class Watchtower extends Component {
   // Render
   render() {
     return (
-      <TabBarIOS
-        style={styles.container}>
+      <TabBarIOS style={styles.container}>
         <TabBarIOS.Item
           title='Movies'
           icon={moviesIcon}
