@@ -4,8 +4,11 @@ import React, {
   ListView,
   StyleSheet,
   Text,
+  TouchableOpacity,
   View
 } from 'react-native';
+
+import MovieDetail from './MovieDetail';
 
 import api from '../utils/api';
 import colors from '../utils/colors';
@@ -56,6 +59,10 @@ class MoviesList extends Component {
   constructor(props) {
     super(props);
     
+    // Bind `this` to functions
+    this.renderRow = this.renderRow.bind(this);
+    this.navigateToMovieDetail = this.navigateToMovieDetail.bind(this);
+    
     this.state = {
       dataSource: new ListView.DataSource({
         rowHasChanged: (r1, r2) => r1 !== r2
@@ -81,6 +88,13 @@ class MoviesList extends Component {
       .done();
   }
   
+  navigateToMovieDetail(movie) {
+    this.props.navigator.push({
+      title: movie.title,
+      component: MovieDetail
+    });
+  }
+  
   renderLoadingView() {
     return (
       <View style={styles.loadingContainer}>
@@ -91,25 +105,27 @@ class MoviesList extends Component {
   
   renderRow(row) {
     return (
-      <View style={styles.row}>
-        <View style={styles.posterContainer}>
-          <Image
-            style={styles.poster}
-            resizeMode='contain'
-            source={{uri: api.getPoster(row.poster_path, 'w154')}}
-          />
-        </View>
-        
-        <View style={styles.body}>
-          <Text style={styles.title}>{row.title}</Text>
+      <TouchableOpacity onPress={() => { this.navigateToMovieDetail(row); }}>
+        <View style={styles.row}>
+          <View style={styles.posterContainer}>
+            <Image
+              style={styles.poster}
+              resizeMode='contain'
+              source={{uri: api.getPoster(row.poster_path, 'w154')}}
+            />
+          </View>
           
-          <Text style={styles.description}>
-            Released in {row.release_date.slice(0,4)}
-            {'\n'}
-            {truncate(row.overview, 100)}
-          </Text>
+          <View style={styles.body}>
+            <Text style={styles.title}>{row.title}</Text>
+            
+            <Text style={styles.description}>
+              Released in {row.release_date.slice(0,4)}
+              {'\n'}
+              {truncate(row.overview, 100)}
+            </Text>
+          </View>
         </View>
-      </View>
+      </TouchableOpacity>
     );
   }
   
