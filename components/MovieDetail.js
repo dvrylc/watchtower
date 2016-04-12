@@ -30,9 +30,8 @@ const styles = StyleSheet.create({
   sectionContainer: {
     paddingVertical: 10,
     borderColor: colors.border,
-    borderBottomWidth: 0.5
-  },
-  sectionFlex: {
+    borderBottomWidth: 0.5,
+    
     flex: 1,
     flexDirection: 'row'
   },
@@ -114,46 +113,42 @@ class MovieDetail extends Component {
           
           {/* Metadata */}
           <View style={styles.sectionContainer}>
-            <View style={styles.sectionFlex}>
-              <View style={styles.sectionLabels}>
-                <Text style={styles.sectionLabel}>Released</Text>
-                <Text style={styles.sectionLabel}>Rating</Text>
-                <Text style={styles.sectionLabel}>Runtime</Text>
-                <Text style={styles.sectionLabel}>Genre</Text>
-              </View>
+            <View style={styles.sectionLabels}>
+              <Text style={styles.sectionLabel}>Released</Text>
+              <Text style={styles.sectionLabel}>Rating</Text>
+              <Text style={styles.sectionLabel}>Run Time</Text>
+              <Text style={styles.sectionLabel}>Genres</Text>
+            </View>
+            
+            <View style={styles.sectionContent}>
+              <Text style={styles.description}>
+                {moment(movie.release_date).format('LL')}
+              </Text>
               
-              <View style={styles.sectionContent}>
-                <Text style={styles.description}>
-                  {moment(movie.release_date).format('LL')}
-                </Text>
-                
-                <Text style={styles.description}>
-                  {parseFloat(movie.vote_average).toFixed(1)} / 10.0 ({movie.vote_count} votes)
-                </Text>
-                
-                <Text style={styles.description}>
-                  {movieDetail.runtime} minutes
-                </Text>
-                
-                <Text style={styles.description}>
-                  {movieGenres.join(', ')}
-                </Text>
-              </View>
+              <Text style={styles.description}>
+                {parseFloat(movie.vote_average).toFixed(1)} / 10.0 ({movie.vote_count} votes)
+              </Text>
+              
+              <Text style={styles.description}>
+                {movieDetail.runtime} minutes
+              </Text>
+              
+              <Text style={styles.description}>
+                {movieGenres.join(', ')}
+              </Text>
             </View>
           </View>
           
           {/* Overview */}
           <View style={styles.sectionContainer}>
-            <View style={styles.sectionFlex}>
-              <View style={styles.sectionLabels}>
-                <Text style={styles.sectionLabel}>Overview</Text>
-              </View>
-              
-              <View style={styles.sectionContent}>
-                <Text style={styles.description}>
-                  {movieDetail.overview}
-                </Text>
-              </View>
+            <View style={styles.sectionLabels}>
+              <Text style={styles.sectionLabel}>Overview</Text>
+            </View>
+            
+            <View style={styles.sectionContent}>
+              <Text style={styles.description}>
+                {movieDetail.overview}
+              </Text>
             </View>
           </View>
         </View>
