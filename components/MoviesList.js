@@ -90,8 +90,10 @@ class MoviesList extends Component {
   
   navigateToMovieDetail(movie) {
     this.props.navigator.push({
-      title: movie.title,
-      component: MovieDetail
+      component: MovieDetail,
+      passProps: {
+        movie: movie
+      }
     });
   }
   
