@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
     margin: 10
   },
   sectionContainer: {
-    paddingBottom: 10,
+    paddingVertical: 10,
     borderColor: colors.border,
     borderBottomWidth: 0.5
   },
@@ -45,8 +45,7 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 20,
-    fontWeight: '500',
-    marginBottom: 10
+    fontWeight: '500'
   },
   sectionLabel: {
     textAlign: 'right'
@@ -113,6 +112,7 @@ class MovieDetail extends Component {
         <View style={styles.body}>
           <Text style={styles.title}>{movie.title}</Text>
           
+          {/* Metadata */}
           <View style={styles.sectionContainer}>
             <View style={styles.sectionFlex}>
               <View style={styles.sectionLabels}>
@@ -137,6 +137,21 @@ class MovieDetail extends Component {
                 
                 <Text style={styles.description}>
                   {movieGenres.join(', ')}
+                </Text>
+              </View>
+            </View>
+          </View>
+          
+          {/* Overview */}
+          <View style={styles.sectionContainer}>
+            <View style={styles.sectionFlex}>
+              <View style={styles.sectionLabels}>
+                <Text style={styles.sectionLabel}>Overview</Text>
+              </View>
+              
+              <View style={styles.sectionContent}>
+                <Text style={styles.description}>
+                  {movieDetail.overview}
                 </Text>
               </View>
             </View>
