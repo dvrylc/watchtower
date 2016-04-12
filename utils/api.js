@@ -9,6 +9,10 @@ const api = {
     return fetch(`${root}/movie/popular?api_key=${key}`)
              .then(response => response.json());
   },
+  loadMovieDetail: movieID => {
+    return fetch(`${root}/movie/${movieID}?api_key=${key}`)
+             .then(response => response.json());
+  },
   getPoster: (file, size) => {
     return `${imgRoot}/${size}${file}?api_key=${key}`;
   }
