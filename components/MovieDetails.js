@@ -109,6 +109,7 @@ class MovieDetails extends Component {
   navigateToMovieTrailers(movieID) {
     this.props.navigator.push({
       component: MovieTrailers,
+      title: 'Trailers',
       passProps: {
         movieID: movieID
       }
