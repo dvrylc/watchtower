@@ -124,7 +124,7 @@ class MovieDetail extends Component {
             
             <View style={styles.sectionContent}>
               <Text style={styles.description}>
-                {moment(movie.release_date).format('LL')}
+                {moment(movie.release_date).format('D MMM Y')}
               </Text>
               
               <Text style={styles.description}>
