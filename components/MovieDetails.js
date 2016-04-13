@@ -4,9 +4,12 @@ import React, {
   ScrollView,
   StyleSheet,
   Text,
+  TouchableOpacity,
   View
 } from 'react-native';
 import moment from 'moment';
+
+import MovieTrailers from './MovieTrailers';
 
 import api from '../utils/api';
 import colors from '../utils/colors';
@@ -72,6 +75,9 @@ class MovieDetails extends Component {
   constructor(props) {
     super(props);
     
+    // Bind `this` to functions
+    this.navigateToMovieTrailers = this.navigateToMovieTrailers.bind(this);
+    
     this.state = {
       movieDetails: {},
       loaded: false
@@ -93,6 +99,15 @@ class MovieDetails extends Component {
         });
       })
       .done();
+  }
+  
+  navigateToMovieTrailers(movieID) {
+    this.props.navigator.push({
+      component: MovieTrailers,
+      passProps: {
+        movieID: movieID
+      }
+    })
   }
   
   renderLoadingView() {
@@ -171,13 +186,15 @@ class MovieDetails extends Component {
           
           {/* Links */}
           <View style={styles.sectionContainer}>
-            <View style={styles.sectionFlex}>
-              <Text style={styles.linkLabel}>Trailers</Text>
-              <Image
-                style={styles.linkArrow}
-                source={nextIcon}
-              />
-            </View>
+            <TouchableOpacity onPress={() => this.navigateToMovieTrailers(movie.id)}>
+              <View style={styles.sectionFlex}>
+                <Text style={styles.linkLabel}>Trailers</Text>
+                <Image
+                  style={styles.linkArrow}
+                  source={nextIcon}
+                />
+              </View>
+            </TouchableOpacity>
           </View>
         </View>
       </ScrollView>

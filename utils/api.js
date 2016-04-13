@@ -13,8 +13,15 @@ const api = {
     return fetch(`${root}/movie/${movieID}?api_key=${key}`)
              .then(response => response.json());
   },
+  loadMovieTrailers: movieID => {
+    return fetch(`${root}/movie/${movieID}/videos?api_key=${key}`)
+             .then(response => response.json());
+  },
   getPoster: (file, size) => {
     return `${imgRoot}/${size}${file}?api_key=${key}`;
+  },
+  getYouTubeThumbnail: youtubeID => {
+    return `https://img.youtube.com/vi/${youtubeID}/mqdefault.jpg`
   }
 }
 
