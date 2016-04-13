@@ -2,6 +2,7 @@ import React, {
   Component,
   Image,
   ListView,
+  RefreshControl,
   StyleSheet,
   Text,
   TouchableOpacity,
@@ -56,14 +57,16 @@ class MoviesList extends Component {
     super(props);
     
     // Bind `this` to functions
-    this.renderRow = this.renderRow.bind(this);
+    this.handleRefresh = this.handleRefresh.bind(this);
     this.navigateToMovieDetails = this.navigateToMovieDetails.bind(this);
+    this.renderRow = this.renderRow.bind(this);
     
     this.state = {
       dataSource: new ListView.DataSource({
         rowHasChanged: (r1, r2) => r1 !== r2
       }),
-      loaded: false
+      loaded: false,
+      refreshing: false
     }
   }
   
@@ -78,10 +81,20 @@ class MoviesList extends Component {
       .then(response => {
         this.setState({
           dataSource: this.state.dataSource.cloneWithRows(response.results),
-          loaded: true
+          loaded: true,
+          refreshing: false
         });
       })
       .done();
+  }
+  
+  handleRefresh() {
+    this.setState({
+      refreshing: true
+    });
+    
+    this.fetchData();
+    console.log('refreshed');
   }
   
   navigateToMovieDetails(movie) {
@@ -139,6 +152,13 @@ class MoviesList extends Component {
         dataSource={this.state.dataSource}
         renderRow={this.renderRow}
         contentInset={{bottom: 49}}
+        
+        refreshControl={
+          <RefreshControl
+            refreshing={this.state.refreshing}
+            onRefresh={this.handleRefresh}
+          />
+        }
       />
     );
   }
