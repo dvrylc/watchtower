@@ -15,26 +15,23 @@ import colors from '../utils/colors';
 import truncate from '../utils/truncate';
 
 const styles = StyleSheet.create({
-  container: {
-    marginTop: 44
-  },
   loadingContainer: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center'
+  },
+  container: {
+    marginTop: 44
   },
   row: {
     marginLeft: 10,
     paddingVertical: 10,
     paddingRight: 10,
     borderBottomColor: colors.border,
-    borderBottomWidth: 0.5,
+    borderBottomWidth: StyleSheet.hairlineWidth,
     
     flex: 1,
     flexDirection: 'row'
-  },
-  posterContainer: {
-    flex: 0
   },
   poster: {
     width: 70,
@@ -45,11 +42,10 @@ const styles = StyleSheet.create({
     flex: 1
   },
   title: {
-    fontSize: 16,
+    fontSize: 18,
     fontWeight: '500'
   },
   description: {
-    fontSize: 14,
     color: colors.lightFont
   }
 });
@@ -91,6 +87,7 @@ class MoviesList extends Component {
   navigateToMovieDetails(movie) {
     this.props.navigator.push({
       component: MovieDetails,
+      title: 'Details',
       passProps: {
         movie: movie
       }
@@ -100,22 +97,20 @@ class MoviesList extends Component {
   renderLoadingView() {
     return (
       <View style={styles.loadingContainer}>
-        <Text>Loading Movies...</Text>
+        <Text>Loading movies...</Text>
       </View>
     );
   }
   
   renderRow(row) {
     return (
-      <TouchableOpacity onPress={() => { this.navigateToMovieDetails(row); }}>
+      <TouchableOpacity onPress={() => this.navigateToMovieDetails(row)}>
         <View style={styles.row}>
-          <View style={styles.posterContainer}>
-            <Image
-              style={styles.poster}
-              resizeMode='contain'
-              source={{uri: api.getPoster(row.poster_path, 'w154')}}
-            />
-          </View>
+          <Image
+            style={styles.poster}
+            resizeMode='contain'
+            source={{uri: api.getPoster(row.poster_path, 'w154')}}
+          />
           
           <View style={styles.body}>
             <Text style={styles.title}>{row.title}</Text>
