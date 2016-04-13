@@ -25,10 +25,12 @@ const styles = StyleSheet.create({
     height: 150
   },
   body: {
-    margin: 10
+    marginTop: 10,
+    marginLeft: 10
   },
   sectionContainer: {
     paddingVertical: 10,
+    paddingRight: 10,
     borderColor: colors.border,
     borderBottomWidth: 0.5,
     
