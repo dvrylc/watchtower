@@ -1,10 +1,8 @@
 import React, {
   Component,
-  Image,
   ListView,
   StyleSheet,
   Text,
-  TouchableOpacity,
   View
 } from 'react-native';
 
