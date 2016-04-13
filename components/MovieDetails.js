@@ -65,13 +65,13 @@ const styles = StyleSheet.create({
   }
 });
 
-class MovieDetail extends Component {
+class MovieDetails extends Component {
   // Constructor
   constructor(props) {
     super(props);
     
     this.state = {
-      movieDetail: {},
+      movieDetails: {},
       loaded: false
     }
   }
@@ -83,10 +83,10 @@ class MovieDetail extends Component {
   
   // Functions
   fetchData(movieID) {
-    api.loadMovieDetail(movieID)
+    api.loadMovieDetails(movieID)
       .then(response => {
         this.setState({
-          movieDetail: response,
+          movieDetails: response,
           loaded: true
         });
       })
@@ -109,8 +109,8 @@ class MovieDetail extends Component {
     }
     
     const movie = this.props.movie;
-    const movieDetail = this.state.movieDetail;
-    const movieGenres = movieDetail.genres.map(g => g.name);
+    const movieDetails = this.state.movieDetails;
+    const movieGenres = movieDetails.genres.map(g => g.name);
     
     return (
       <ScrollView style={styles.container}>
@@ -142,7 +142,7 @@ class MovieDetail extends Component {
                 </Text>
                 
                 <Text style={styles.description}>
-                  {movieDetail.runtime} minutes
+                  {movieDetails.runtime} minutes
                 </Text>
                 
                 <Text style={styles.description}>
@@ -161,7 +161,7 @@ class MovieDetail extends Component {
               
               <View style={styles.sectionContent}>
                 <Text style={styles.description}>
-                  {movieDetail.overview}
+                  {movieDetails.overview}
                 </Text>
               </View>
             </View>
@@ -183,4 +183,4 @@ class MovieDetail extends Component {
   }
 }
 
-export default MovieDetail;
+export default MovieDetails;

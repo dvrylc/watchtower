@@ -8,7 +8,7 @@ import React, {
   View
 } from 'react-native';
 
-import MovieDetail from './MovieDetail';
+import MovieDetails from './MovieDetails';
 
 import api from '../utils/api';
 import colors from '../utils/colors';
@@ -61,7 +61,7 @@ class MoviesList extends Component {
     
     // Bind `this` to functions
     this.renderRow = this.renderRow.bind(this);
-    this.navigateToMovieDetail = this.navigateToMovieDetail.bind(this);
+    this.navigateToMovieDetails = this.navigateToMovieDetails.bind(this);
     
     this.state = {
       dataSource: new ListView.DataSource({
@@ -88,9 +88,9 @@ class MoviesList extends Component {
       .done();
   }
   
-  navigateToMovieDetail(movie) {
+  navigateToMovieDetails(movie) {
     this.props.navigator.push({
-      component: MovieDetail,
+      component: MovieDetails,
       passProps: {
         movie: movie
       }
@@ -107,7 +107,7 @@ class MoviesList extends Component {
   
   renderRow(row) {
     return (
-      <TouchableOpacity onPress={() => { this.navigateToMovieDetail(row); }}>
+      <TouchableOpacity onPress={() => { this.navigateToMovieDetails(row); }}>
         <View style={styles.row}>
           <View style={styles.posterContainer}>
             <Image

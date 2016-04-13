@@ -9,7 +9,7 @@ const api = {
     return fetch(`${root}/movie/popular?api_key=${key}`)
              .then(response => response.json());
   },
-  loadMovieDetail: movieID => {
+  loadMovieDetails: movieID => {
     return fetch(`${root}/movie/${movieID}?api_key=${key}`)
              .then(response => response.json());
   },
