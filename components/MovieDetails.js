@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     paddingRight: 10,
     borderColor: colors.border,
-    borderBottomWidth: 0.5
+    borderBottomWidth: StyleSheet.hairlineWidth
   },
   sectionFlex: {
     flex: 1,
@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
   },
   sectionLabels: {
     flex: 1,
-    paddingRight: 20
+    paddingRight: 10
   },
   sectionContent: {
     flex: 3
@@ -60,13 +60,18 @@ const styles = StyleSheet.create({
   description: {
     color: colors.lightFont
   },
+  linkContainer: {
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'center'
+  },
   linkLabel: {
     flex: 1,
     fontSize: 18
   },
   linkArrow: {
-    width: 18,
-    height: 18
+    width: 16,
+    height: 16
   }
 });
 
@@ -130,7 +135,9 @@ class MovieDetails extends Component {
     const movieGenres = movieDetails.genres.map(g => g.name);
     
     return (
-      <ScrollView style={styles.container}>
+      <ScrollView
+        style={styles.container}
+        contentInset={{bottom: 49}}>
         <Image
           style={styles.heroImage}
           source={{uri: api.getPoster(movie.backdrop_path, 'w1280')}}
@@ -187,7 +194,7 @@ class MovieDetails extends Component {
           {/* Links */}
           <View style={styles.sectionContainer}>
             <TouchableOpacity onPress={() => this.navigateToMovieTrailers(movie.id)}>
-              <View style={styles.sectionFlex}>
+              <View style={styles.linkContainer}>
                 <Text style={styles.linkLabel}>Trailers</Text>
                 <Image
                   style={styles.linkArrow}
