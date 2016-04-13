@@ -19,9 +19,6 @@ const api = {
   },
   getPoster: (file, size) => {
     return `${imgRoot}/${size}${file}?api_key=${key}`;
-  },
-  getYouTubeThumbnail: youtubeID => {
-    return `https://img.youtube.com/vi/${youtubeID}/mqdefault.jpg`
   }
 }
 

@@ -4,8 +4,11 @@ import React, {
   ListView,
   StyleSheet,
   Text,
+  TouchableOpacity,
   View
 } from 'react-native';
+
+import YouTubePlayer from './YouTubePlayer';
 
 import api from '../utils/api';
 import colors from '../utils/colors';
@@ -22,27 +25,18 @@ const styles = StyleSheet.create({
   },
   row: {
     paddingVertical: 10,
+    paddingRight: 10,
     borderColor: colors.border,
-    borderBottomWidth: StyleSheet.hairlineWidth,
-    
-    flex: 1,
-    flexDirection: 'row'
+    borderBottomWidth: StyleSheet.hairlineWidth
   },
-  thumbnail: {
-    width: 100,
-    height: 56,
-    marginRight: 10
-  },
-  titleContainer: {
+  video: {
     flex: 1,
-    paddingRight: 10
+    height: 200,
+    marginBottom: 10
   },
   title: {
     fontSize: 18,
     fontWeight: '500'
-  },
-  description: {
-    color: colors.lightFont
   }
 });
 
@@ -90,15 +84,8 @@ class MovieTrailers extends Component {
   renderRow(row) {
     return (
       <View style={styles.row}>
-        <Image
-          style={styles.thumbnail}
-          source={{uri: api.getYouTubeThumbnail(row.key)}}
-        />
-        
-        <View style={styles.titleContainer}>
-          <Text style={styles.title}>{row.name}</Text>
-          <Text style={styles.description}>{row.type}</Text>
-        </View>
+        <YouTubePlayer style={styles.video} youtubeID={row.key} />
+        <Text style={styles.title}>{row.name}</Text>
       </View>
     );
   }
