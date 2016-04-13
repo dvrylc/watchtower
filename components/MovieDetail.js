@@ -54,6 +54,14 @@ const styles = StyleSheet.create({
   },
   description: {
     color: colors.lightFont
+  },
+  linkLabel: {
+    flex: 1,
+    fontSize: 18
+  },
+  linkArrow: {
+    width: 18,
+    height: 18
   }
 });
 
@@ -156,6 +164,17 @@ class MovieDetail extends Component {
                   {movieDetail.overview}
                 </Text>
               </View>
+            </View>
+          </View>
+          
+          {/* Links */}
+          <View style={styles.sectionContainer}>
+            <View style={styles.sectionFlex}>
+              <Text style={styles.linkLabel}>Trailers</Text>
+              <Image
+                style={styles.linkArrow}
+                source={require('../images/next.png')}
+              />
             </View>
           </View>
         </View>
