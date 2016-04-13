@@ -11,6 +11,8 @@ import moment from 'moment';
 import api from '../utils/api';
 import colors from '../utils/colors';
 
+const nextIcon = require('../images/next.png');
+
 const styles = StyleSheet.create({
   loadingContainer: {
     flex: 1,
@@ -173,7 +175,7 @@ class MovieDetails extends Component {
               <Text style={styles.linkLabel}>Trailers</Text>
               <Image
                 style={styles.linkArrow}
-                source={require('../images/next.png')}
+                source={nextIcon}
               />
             </View>
           </View>
