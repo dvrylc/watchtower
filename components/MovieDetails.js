@@ -10,6 +10,7 @@ import React, {
 import moment from 'moment';
 
 import MovieTrailers from './MovieTrailers';
+import SafariView from './SafariView';
 
 import api from '../utils/api';
 import colors from '../utils/colors';
@@ -121,6 +122,24 @@ class MovieDetails extends Component {
     );
   }
   
+  renderLinks(links) {
+    return links.map((link, index) => {
+      return (
+        <View style={styles.sectionContainer} key={index}>
+          <TouchableOpacity onPress={() => SafariView(link.url)}>
+            <View style={styles.linkContainer}>
+              <Text style={styles.linkLabel}>{link.label}</Text>
+              <Image
+                style={styles.linkArrow}
+                source={nextIcon}
+              />
+            </View>
+          </TouchableOpacity>
+        </View>
+      );
+    });
+  }
+  
   // Render
   render() {
     // Check if movie's details have loaded
@@ -189,7 +208,7 @@ class MovieDetails extends Component {
             </View>
           </View>
           
-          {/* Links */}
+          {/* Trailers */}
           <View style={styles.sectionContainer}>
             <TouchableOpacity onPress={() => this.navigateToMovieTrailers(movie.id)}>
               <View style={styles.linkContainer}>
@@ -201,6 +220,18 @@ class MovieDetails extends Component {
               </View>
             </TouchableOpacity>
           </View>
+          
+          {/* Links */}
+          {this.renderLinks([
+            {
+              url: movieDetails.homepage,
+              label: "Official website"
+            },
+            {
+              url: `http://www.imdb.com/title/${movieDetails.imdb_id}`,
+              label: "View on IMDb"
+            }
+          ])}
         </View>
       </ScrollView>
     );
