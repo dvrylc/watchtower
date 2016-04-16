@@ -94,7 +94,6 @@ class MoviesList extends Component {
     });
     
     this.fetchData();
-    console.log('refreshed');
   }
   
   navigateToMovieDetails(movie) {
@@ -129,7 +128,7 @@ class MoviesList extends Component {
             <Text style={styles.title}>{row.title}</Text>
             
             <Text style={styles.description}>
-              Released in {row.release_date.slice(0,4)}
+              Rated {parseFloat(row.vote_average).toFixed(1)} / 10.0 ({row.vote_count} votes)
               {'\n'}
               {truncate(row.overview, 100)}
             </Text>
