@@ -26,7 +26,6 @@ const styles = StyleSheet.create({
     marginTop: 44
   },
   heroImage: {
-    flex: 1,
     height: 150
   },
   body: {
@@ -40,7 +39,6 @@ const styles = StyleSheet.create({
     borderBottomWidth: StyleSheet.hairlineWidth
   },
   sectionFlex: {
-    flex: 1,
     flexDirection: 'row'
   },
   sectionLabels: {
@@ -51,7 +49,7 @@ const styles = StyleSheet.create({
     flex: 3
   },
   title: {
-    fontSize: 20,
+    fontSize: 18,
     fontWeight: '500'
   },
   sectionLabel: {
@@ -61,13 +59,12 @@ const styles = StyleSheet.create({
     color: colors.lightFont
   },
   linkContainer: {
-    flex: 1,
     flexDirection: 'row',
     alignItems: 'center'
   },
   linkLabel: {
     flex: 1,
-    fontSize: 18
+    fontSize: 16
   },
   linkArrow: {
     width: 16,
@@ -153,7 +150,7 @@ class MovieDetails extends Component {
               <View style={styles.sectionLabels}>
                 <Text style={styles.sectionLabel}>Released</Text>
                 <Text style={styles.sectionLabel}>Rating</Text>
-                <Text style={styles.sectionLabel}>Run Time</Text>
+                <Text style={styles.sectionLabel}>Run time</Text>
                 <Text style={styles.sectionLabel}>Genres</Text>
               </View>
               
