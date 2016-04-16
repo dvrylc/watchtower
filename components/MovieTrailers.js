@@ -28,12 +28,11 @@ const styles = StyleSheet.create({
     borderBottomWidth: StyleSheet.hairlineWidth
   },
   video: {
-    flex: 1,
     height: 200,
     marginBottom: 10
   },
   title: {
-    fontSize: 18,
+    fontSize: 16,
     fontWeight: '500'
   }
 });

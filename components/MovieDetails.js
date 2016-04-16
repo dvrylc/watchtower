@@ -50,7 +50,7 @@ const styles = StyleSheet.create({
     flex: 3
   },
   title: {
-    fontSize: 18,
+    fontSize: 16,
     fontWeight: '500'
   },
   sectionLabel: {
