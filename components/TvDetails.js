@@ -9,7 +9,7 @@ import React, {
 } from 'react-native';
 import moment from 'moment';
 
-// import MovieTrailers from './MovieTrailers';
+import Trailers from './Trailers';
 import SafariView from './SafariView';
 
 import api from '../utils/api';
@@ -104,15 +104,16 @@ class TvDetails extends Component {
       .done();
   }
   
-  /*navigateToMovieTrailers(movieID) {
+  navigateToTrailers(id) {
     this.props.navigator.push({
-      component: MovieTrailers,
+      component: Trailers,
       title: 'Trailers',
       passProps: {
-        movieID: movieID
+        type: 'tv',
+        id: id
       }
     })
-  }*/
+  }
   
   renderLoadingView() {
     return (
@@ -220,7 +221,7 @@ class TvDetails extends Component {
           
           {/* Trailers */}
           <View style={styles.sectionContainer}>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={() => this.navigateToTrailers(tv.id)}>
               <View style={styles.linkContainer}>
                 <Text style={styles.linkLabel}>Trailers</Text>
                 <Image
