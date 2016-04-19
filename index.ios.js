@@ -2,7 +2,8 @@ import React, {
   AppRegistry,
   Component,
   StyleSheet,
-  TabBarIOS
+  TabBarIOS,
+  Text
 } from 'react-native';
 
 import MoviesTab from './components/MoviesTab';
@@ -10,6 +11,7 @@ import TvTab from './components/TvTab';
 
 const moviesIcon = require('./images/movies.png');
 const tvIcon = require('./images/tv.png');
+const aboutIcon = require('./images/about.png');
 
 const styles = StyleSheet.create({
   container: {
@@ -53,6 +55,18 @@ class Watchtower extends Component {
             });
           }}>
           <TvTab />
+        </TabBarIOS.Item>
+        
+        <TabBarIOS.Item
+          title='About'
+          icon={aboutIcon}
+          selected={this.state.selectedTab === 'about'}
+          onPress={() => {
+            this.setState({
+              selectedTab: 'about'
+            });
+          }}>
+          <Text>about</Text>
         </TabBarIOS.Item>
       </TabBarIOS>
     );
