@@ -54,10 +54,8 @@ const styles = StyleSheet.create({
     fontWeight: '500'
   },
   sectionLabel: {
+    color: colors.lightFont,
     textAlign: 'right'
-  },
-  description: {
-    color: colors.lightFont
   },
   linkContainer: {
     flexDirection: 'row',
@@ -177,27 +175,27 @@ class TvDetails extends Component {
               </View>
               
               <View style={styles.sectionContent}>
-                <Text style={styles.description}>
+                <Text>
                   {parseFloat(tv.vote_average).toFixed(1)} / 10.0 ({tv.vote_count} votes)
                 </Text>
                 
-                <Text style={styles.description}>
+                <Text>
                   {tvDetails.status}
                 </Text>
                 
-                <Text style={styles.description}>
+                <Text>
                   {moment(tv.first_air_date).format('D MMM Y')}
                 </Text>
                 
-                <Text style={styles.description}>
+                <Text>
                   {moment(tv.last_air_date).format('D MMM Y')}
                 </Text>
                 
-                <Text style={styles.description}>
+                <Text>
                   About {tvDetails.episode_run_time[0]} minutes
                 </Text>
                 
-                <Text style={styles.description}>
+                <Text>
                   {tvGenres.join(', ')}
                 </Text>
               </View>
@@ -212,7 +210,7 @@ class TvDetails extends Component {
               </View>
               
               <View style={styles.sectionContent}>
-                <Text style={styles.description}>
+                <Text>
                   {tvDetails.overview}
                 </Text>
               </View>

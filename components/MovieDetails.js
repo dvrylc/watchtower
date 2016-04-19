@@ -54,10 +54,8 @@ const styles = StyleSheet.create({
     fontWeight: '500'
   },
   sectionLabel: {
+    color: colors.lightFont,
     textAlign: 'right'
-  },
-  description: {
-    color: colors.lightFont
   },
   linkContainer: {
     flexDirection: 'row',
@@ -175,19 +173,19 @@ class MovieDetails extends Component {
               </View>
               
               <View style={styles.sectionContent}>
-                <Text style={styles.description}>
+                <Text>
                   {moment(movie.release_date).format('D MMM Y')}
                 </Text>
                 
-                <Text style={styles.description}>
+                <Text>
                   {parseFloat(movie.vote_average).toFixed(1)} / 10.0 ({movie.vote_count} votes)
                 </Text>
                 
-                <Text style={styles.description}>
+                <Text>
                   {movieDetails.runtime} minutes
                 </Text>
                 
-                <Text style={styles.description}>
+                <Text>
                   {movieGenres.join(', ')}
                 </Text>
               </View>
@@ -202,7 +200,7 @@ class MovieDetails extends Component {
               </View>
               
               <View style={styles.sectionContent}>
-                <Text style={styles.description}>
+                <Text>
                   {movieDetails.overview}
                 </Text>
               </View>
