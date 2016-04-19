@@ -78,6 +78,14 @@ class Trailers extends Component {
     );
   }
   
+  renderEmptyView() {
+    return (
+      <View style={styles.loadingContainer}>
+        <Text>No trailers available</Text>
+      </View>
+    );
+  }
+  
   renderRow(row) {
     return (
       <View style={styles.row}>
@@ -92,6 +100,10 @@ class Trailers extends Component {
     // Check if trailers have loaded
     if (!this.state.loaded) {
       return this.renderLoadingView();
+    }
+    
+    if (this.state.dataSource._cachedRowCount === 0) {
+      return this.renderEmptyView();
     }
     
     return (
