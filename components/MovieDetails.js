@@ -9,7 +9,7 @@ import React, {
 } from 'react-native';
 import moment from 'moment';
 
-import MovieTrailers from './MovieTrailers';
+import Trailers from './Trailers';
 import SafariView from './SafariView';
 
 import api from '../utils/api';
@@ -79,7 +79,7 @@ class MovieDetails extends Component {
     super(props);
     
     // Bind `this` to functions
-    this.navigateToMovieTrailers = this.navigateToMovieTrailers.bind(this);
+    this.navigateToTrailers = this.navigateToTrailers.bind(this);
     
     this.state = {
       movieDetails: {},
@@ -104,12 +104,13 @@ class MovieDetails extends Component {
       .done();
   }
   
-  navigateToMovieTrailers(movieID) {
+  navigateToTrailers(id) {
     this.props.navigator.push({
-      component: MovieTrailers,
+      component: Trailers,
       title: 'Trailers',
       passProps: {
-        movieID: movieID
+        type: 'movie',
+        id: id
       }
     })
   }
@@ -210,7 +211,7 @@ class MovieDetails extends Component {
           
           {/* Trailers */}
           <View style={styles.sectionContainer}>
-            <TouchableOpacity onPress={() => this.navigateToMovieTrailers(movie.id)}>
+            <TouchableOpacity onPress={() => this.navigateToTrailers(movie.id)}>
               <View style={styles.linkContainer}>
                 <Text style={styles.linkLabel}>Trailers</Text>
                 <Image

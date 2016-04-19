@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
   }
 });
 
-class MovieTrailers extends Component {
+class Trailers extends Component {
   // Constructor
   constructor(props) {
     super(props);
@@ -52,12 +52,12 @@ class MovieTrailers extends Component {
   
   // Lifecycle
   componentDidMount() {
-    this.fetchData(this.props.movieID);
+    this.fetchData(this.props.type, this.props.id);
   }
   
   // Functions
-  fetchData(movieID) {
-    api.loadMovieTrailers(movieID)
+  fetchData(type, id) {
+    api.loadTrailers(type, id)
       .then(response => {
         return response.results.filter(r => ['Trailer', 'Teaser'].indexOf(r.type) > -1)
       })
@@ -89,7 +89,7 @@ class MovieTrailers extends Component {
   
   // Render
   render() {
-    // Check if movie's trailers have loaded
+    // Check if trailers have loaded
     if (!this.state.loaded) {
       return this.renderLoadingView();
     }
@@ -105,4 +105,4 @@ class MovieTrailers extends Component {
   }
 }
 
-export default MovieTrailers;
+export default Trailers;

@@ -13,8 +13,8 @@ const api = {
     return fetch(`${root}/movie/${movieID}?api_key=${key}`)
              .then(response => response.json());
   },
-  loadMovieTrailers: movieID => {
-    return fetch(`${root}/movie/${movieID}/videos?api_key=${key}`)
+  loadTrailers: (type, id) => {
+    return fetch(`${root}/${type}/${id}/videos?api_key=${key}`)
              .then(response => response.json());
   },
   loadTv: () => {
