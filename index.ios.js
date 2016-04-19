@@ -11,6 +11,12 @@ import TvTab from './components/TvTab';
 const moviesIcon = require('./images/movies.png');
 const tvIcon = require('./images/tv.png');
 
+const styles = StyleSheet.create({
+  container: {
+    marginTop: 20
+  }
+});
+
 class Watchtower extends Component {
   // Constructor
   constructor(props) {
@@ -52,11 +58,5 @@ class Watchtower extends Component {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    marginTop: 20
-  }
-});
 
 AppRegistry.registerComponent('Watchtower', () => Watchtower);
