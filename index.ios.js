@@ -8,6 +8,7 @@ import React, {
 
 import MoviesTab from './components/MoviesTab';
 import TvTab from './components/TvTab';
+import AboutTab from './components/AboutTab';
 
 const moviesIcon = require('./images/movies.png');
 const tvIcon = require('./images/tv.png');
@@ -66,7 +67,7 @@ class Watchtower extends Component {
               selectedTab: 'about'
             });
           }}>
-          <Text>about</Text>
+          <AboutTab />
         </TabBarIOS.Item>
       </TabBarIOS>
     );
