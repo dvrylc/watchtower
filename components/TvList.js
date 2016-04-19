@@ -9,7 +9,7 @@ import React, {
   View
 } from 'react-native';
 
-// import TvDetails from './TvDetails';
+import TvDetails from './TvDetails';
 
 import api from '../utils/api';
 import colors from '../utils/colors';
@@ -58,7 +58,7 @@ class TvList extends Component {
     
     // Bind `this` to functions
     this.handleRefresh = this.handleRefresh.bind(this);
-    // this.navigateToTvDetails = this.navigateToTvDetails.bind(this);
+    this.navigateToTvDetails = this.navigateToTvDetails.bind(this);
     this.renderRow = this.renderRow.bind(this);
     
     this.state = {
@@ -96,7 +96,7 @@ class TvList extends Component {
     this.fetchData();
   }
   
-  /*navigateToTvDetails(tv) {
+  navigateToTvDetails(tv) {
     this.props.navigator.push({
       component: TvDetails,
       title: 'Details',
@@ -104,7 +104,7 @@ class TvList extends Component {
         tv: tv
       }
     });
-  }*/
+  }
   
   renderLoadingView() {
     return (
@@ -116,7 +116,7 @@ class TvList extends Component {
   
   renderRow(row) {
     return (
-      <TouchableOpacity>
+      <TouchableOpacity onPress={() => this.navigateToTvDetails(row)}>
         <View style={styles.row}>
           <Image
             style={styles.poster}

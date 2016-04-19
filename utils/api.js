@@ -21,6 +21,10 @@ const api = {
     return fetch(`${root}/tv/popular?api_key=${key}`)
              .then(response => response.json());
   },
+  loadTvDetails: tvID => {
+    return fetch(`${root}/tv/${tvID}?api_key=${key}`)
+             .then(response => response.json());
+  },
   getPoster: (file, size) => {
     return `${imgRoot}/${size}${file}?api_key=${key}`;
   }
