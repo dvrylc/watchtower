@@ -78,7 +78,7 @@ class AboutContent extends Component {
       return (
         <TouchableOpacity onPress={() => SafariView(link.url)} key={index}>
           <View style={styles.linkFlex}>
-            <Text style={styles.linkLabel} allowFontScaling={true}>{link.label}</Text>
+            <Text style={styles.linkLabel}>{link.label}</Text>
             <Image
               style={styles.linkArrow}
               source={nextIcon}
