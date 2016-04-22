@@ -1,6 +1,7 @@
 import React, {
   Component,
   Image,
+  NavigatorIOS,
   StyleSheet,
   ScrollView,
   Text,
@@ -19,29 +20,15 @@ const styles = StyleSheet.create({
   container: {
     flex: 1
   },
-  header: {
-    height: 44.5,
-    backgroundColor: '#f8f8f8',
-    borderColor: '#b2b2b2',
-    borderBottomWidth: StyleSheet.hairlineWidth,
-    
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center'
-  },
-  headerText: {
-    fontSize: 17,
-    fontWeight: '600',
-    textAlign: 'center'
-  },
   body: {
-    backgroundColor: '#efeff4'
+    backgroundColor: '#efeff4',
+    marginTop: 44
   },
   section: {
     borderColor: colors.border,
     borderTopWidth: StyleSheet.hairlineWidth,
     borderBottomWidth: StyleSheet.hairlineWidth,
-    marginTop: 35,
+    marginBottom: 44,
     paddingLeft: 10,
     backgroundColor: 'white'
   },
@@ -85,13 +72,13 @@ const styles = StyleSheet.create({
   }
 });
 
-class AboutTab extends Component {
+class AboutContent extends Component {
   renderLinks(links) {
     return links.map((link, index) => {
       return (
         <TouchableOpacity onPress={() => SafariView(link.url)} key={index}>
           <View style={styles.linkFlex}>
-            <Text style={styles.linkLabel}>{link.label}</Text>
+            <Text style={styles.linkLabel} allowFontScaling={true}>{link.label}</Text>
             <Image
               style={styles.linkArrow}
               source={nextIcon}
@@ -104,58 +91,66 @@ class AboutTab extends Component {
   
   render() {
     return (
-      <View style={styles.container}>
-        <View style={styles.header}>
-          <Text style={styles.headerText}>About</Text>
-        </View>
-        
-        <ScrollView
-          style={styles.body}
-          contentInset={{bottom: 49}}>
-          <View style={styles.section}>
-            <View style={styles.sectionFlex}>
-              <Image
-                style={styles.icon}
-                source={appIcon}
-              />
+      <ScrollView
+        style={styles.body}
+        contentInset={{bottom: 49}}>
+        <View style={styles.section}>
+          <View style={styles.sectionFlex}>
+            <Image
+              style={styles.icon}
+              source={appIcon}
+            />
+            
+            <View style={styles.sectionWide}>
+              <Text style={styles.title}>Watchtower</Text>
               
-              <View style={styles.sectionWide}>
-                <Text style={styles.title}>Watchtower</Text>
-                
-                <Text>
-                  The most popular Movies and TV Shows of the day, coupled with easy access to trailers and additional content.
-                </Text>
-              </View>
-            </View>
-          </View>
-          
-          <View style={styles.section}>
-            {this.renderLinks([
-              {
-                url: 'https://darylchan.net',
-                label: 'Built by Daryl Chan'
-              },
-              {
-                url: 'https://twitter.com/dvrylc',
-                label: 'Follow @dvrylc'
-              },
-              {
-                url: 'https://github.com/dvrylc/watchtower',
-                label: 'Watchtower on GitHub'
-              }
-            ])}
-          </View>
-          
-          <View style={styles.section}>
-            <View style={styles.sectionFlex}>
-              <Text style={styles.description}>
-                Icons designed by Freepik.{'\n'}
-                This app uses the TMDb API but is not endorsed or certified by TMDb.
+              <Text>
+                The most popular Movies and TV Shows of the day, coupled with easy access to trailers and additional content.
               </Text>
             </View>
           </View>
-        </ScrollView>
-      </View>
+        </View>
+        
+        <View style={styles.section}>
+          {this.renderLinks([
+            {
+              url: 'https://darylchan.net',
+              label: 'Built by Daryl Chan'
+            },
+            {
+              url: 'https://twitter.com/dvrylc',
+              label: 'Follow @dvrylc'
+            },
+            {
+              url: 'https://github.com/dvrylc/watchtower',
+              label: 'Watchtower on GitHub'
+            }
+          ])}
+        </View>
+        
+        <View style={styles.section}>
+          <View style={styles.sectionFlex}>
+            <Text style={styles.description}>
+              Icons designed by Freepik.{'\n'}
+              This app uses the TMDb API but is not endorsed or certified by TMDb.
+            </Text>
+          </View>
+        </View>
+      </ScrollView>
+    );
+  }
+}
+
+class AboutTab extends Component {
+  render() {
+    return (
+      <NavigatorIOS
+        style={styles.container}
+        initialRoute={{
+          title: 'About',
+          component: AboutContent
+        }}
+      />
     );
   }
 }
