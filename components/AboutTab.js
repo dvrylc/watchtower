@@ -12,7 +12,7 @@ import SafariView from './SafariView';
 
 import colors from '../utils/colors';
 
-const appIcon = require('../images/about.png');
+const appIcon = require('../images/app-icon.png');
 const nextIcon = require('../images/next.png');
 
 const styles = StyleSheet.create({
